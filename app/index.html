@@ -17,35 +17,26 @@
         <!-- endbuild -->
 
 
-        <!-- // <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script> -->
     </head>
     <body>
-        <div class="container">
-            <div class="header">
-                <ul class="nav nav-pills pull-right">
-                    <!-- <li class="active"><a href="#">Home</a></li> -->
-                    <!-- <li><a href="#">About</a></li> -->
-                    <li><a href="#" class='showStores hidden'>show all stores</a></li>
-                    <li><a href="#" class='locate'>where am I?</a></li>
-                    <!-- <li><a href="mailto:ben.kane@urs.com">Contact</a></li> -->
-                </ul>
-                <h3 class="title loading small text-muted">google training</h3>
-            </div>
-
-            <div id="map-canvas" class="jumbotron"></div>
+        <div class="header">
+            <ul class="nav nav-pills pull-right">
+                <li><a href="#" class='showStores show hidden'>all stores</a></li>
+                <li><a href="#" class='showDirections hidden'>directions</a></li>
+                <li><input class='location text-center' placeholder='search for a location' type="text"/></li>
+                <li><a href="#" class='locate'>where am I?</a></li>
+                <!-- <li><a href="mailto:ben.kane@urs.com">Contact</a></li> -->
+            </ul>
+            <h3 class="title small text-muted">google training</h3>
+        </div>
+        <div class="main-container">    
+            <div id='directions' class='column text-center cansplit trans'></div>
+            <div id="map-canvas" class="cansplit trans"></div>                
 
             <div class="row marketing">
-                <div class="row col-lg-6 text-center">
-                    <input class='location text-center' placeholder='search for a location' type="text"/>
-                    <ul class='closest'></ul>
-                </div>
-                <div class="row col-lg-6 text-center loadingInfo"></div>
+                <ul class='row text-center closest col-lg-6'></ul>
+                <div class='row text-center loading col-lg-6'>loading...</div>
             </div>
-
-<!--             <div class="footer">
-                <p><span class="glyphicon"></span> thanks for looking</p>
-            </div> -->
-
         </div>
 
 
@@ -56,14 +47,16 @@
         <!-- endbuild -->
 
         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+        <!--
         <script>
-            // (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
-            // function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
-            // e=o.createElement(i);r=o.getElementsByTagName(i)[0];
-            // e.src='//www.google-analytics.com/analytics.js';
-            // r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
-            // ga('create','UA-XXXXX-X');ga('send','pageview');
+            (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+            function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+            e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+            e.src='//www.google-analytics.com/analytics.js';
+            r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+            ga('create','UA-XXXXX-X');ga('send','pageview');
         </script>
+        -->
 
         <!-- build:js scripts/plugins.js -->
         <script src="../bower_components/bootstrap/js/affix.js"></script>

@@ -1,9 +1,4 @@
-.browsehappy {
-    margin: 0.2em 0;
-    background: #ccc;
-    color: #000;
-    padding: 0.2em 0;
-}
+.trans{transition:all 1s ease}
 
 /* Space out content a bit */
 body {
@@ -26,8 +21,9 @@ body {
 
 /* Make the masthead heading the same height as the navigation */
 .header h3 {
-    margin-top: 0;
-    margin-bottom: 0;
+/*    margin-top: 0;
+    margin-bottom: 0;*/
+    margin: 0 15px;
     line-height: 40px;
     padding-bottom: 19px;
 }
@@ -39,7 +35,7 @@ body {
     border-top: 1px solid #e5e5e5;
 }
 
-.container-narrow > hr {
+.main-container-narrow > hr {
     margin: 30px 0;
 }
 
@@ -58,35 +54,75 @@ body {
 /*.marketing {
     margin: 40px 0;
 }*/
-
+.marketing{
+    margin: 0 -7px;
+    /*width: inherit;*/
+}
 .marketing p + h4 {
     margin-top: 28px;
 }
 
-.container{
+.main-container{
+    text-align: center;
     height: 100%;
-}
-
-#map-canvas{
     margin: 0;
     padding: 0;
-    height: calc(100% - 141px);
+    overflow-x: hidden;
+    text-align: center;
 }
+
+.main-container>div:not(.marketing){
+    height: calc(100% - 130px);
+    margin: 42px 0 0;
+}
+
+#directions:not(.split){
+    display: none;
+}
+
+.main-container>div.split {
+    width: 49%;
+    position: relative;
+    display: inline-block;
+    min-height: 300px;
+    padding: 0;
+    overflow: auto;
+}
+/*#map-canvas{
+    margin: 0;
+    padding: 0;
+    min-height: 300px;
+    height: calc(100% - 141px);
+}*/
 html, body{
     height: 100%;
     margin: 0px;
     padding: 0px;
 }
 
-.header{
+.main-container:before{
+    height: 50px;
+}
+
+.header {
+    /*margin-bottom: 5px;*/
+    top: 0;
+    margin: 0 auto;
     height: 40px;
+    position: fixed;
+    padding: 0 15px;
+    width: 100%;
+    z-index: 999;
+    background-color: rgba(255,255,255,0.9);
+    overflow: hidden;
 }
 
 .hidden{
     display: none;
 }
 
-.title.loading:after {
+.loading
+/*:after*/ {
     display: inline-block;
     content: 'loading...';
     position: absolute;
@@ -96,10 +132,12 @@ html, body{
 }
 
 ul.closest {
+    margin: 0 auto;
     width: 100%;
 }
 ul.closest > li{
-    display: inline-flex;
+    /*display: inline-flex;*/
+    display: table-cell;
     list-style-type: none;
     width: 20%;
     border: 1px solid #666;
@@ -109,13 +147,34 @@ ul.closest > li:hover{
     background-color: #ccc;
 }
 
+.show:after {
+    content: '+'!important;
+}
+.showDirections:after, .showStores:after{
+    content: 'x';
+    border: 1px solid;
+    text-align: center;
+    border-radius: 12px;
+    padding: 1px;
+    height: 16px;
+    width: 18px;
+    line-height: 10px;
+    display: inline-block;
+    margin-left: 2px;
+}
+
+input.location{
+    padding: 5px 0;
+    margin: 2px 0 0 0;
+}
+
 .nav-pills li{
     height: 80%;
 }
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
-    .container {
-        max-width: 730px;
+    .main-container {
+        /*max-width: 730px;*/
     }
 
     /* Remove the padding we set earlier */
@@ -128,7 +187,7 @@ ul.closest > li:hover{
 
     /* Space out the masthead */
     .header {
-        margin-bottom: 30px;
+        margin-bottom: 5px;
     }
     
     /* Remove the bottom border on the jumbotron for visual effect */
