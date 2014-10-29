@@ -55,7 +55,10 @@ body {
     margin: 40px 0;
 }*/
 .marketing{
-    margin: 0 -7px;
+    margin: 0 auto;
+	text-align: center;
+	vertical-align: top;
+	height: 85px;
     /*width: inherit;*/
 }
 .marketing p + h4 {
@@ -123,28 +126,59 @@ html, body{
 
 .loading
 /*:after*/ {
-    display: inline-block;
     content: 'loading...';
-    position: absolute;
-    width: 100%;
-    left: 0;
-    text-align: center;
+	position: fixed;
+	width: 100%;
+	bottom: 0;
+	left: 0;
+	color: #fff;
+	background-color: #666;
+	text-align: center;
+	width: 100%;
+	padding: 0;
+	margin: 0 auto;
 }
 
 ul.closest {
+	display: table;
     margin: 0 auto;
-    width: 100%;
+	width: 100%;
+	text-align: center;
+	vertical-align: middle;
+	padding: 0;
+	height: 100%;
 }
 ul.closest > li{
-    /*display: inline-flex;*/
-    display: table-cell;
-    list-style-type: none;
-    width: 20%;
-    border: 1px solid #666;
-    cursor: pointer;
+	display: table-cell;
+	list-style-type: none;
+	width: 20%;
+	background-color: #efefef;
+	border: 1px solid #fff;
+	cursor: pointer;
+	height: 100%;
+	text-align: center;
+	margin: 0 auto;
+	vertical-align: top;
 }
 ul.closest > li:hover{
     background-color: #ccc;
+}
+
+
+ul.closest > li:before {
+	content: '';
+	display: block;
+	float: left;
+	position: absolute;
+	margin: 25px 5px;
+	width: 30px;
+	height: 40px;
+	background: url(https://mts.googleapis.com/vt/icon/name=icons/spotlight/spotlight-waypoint-b.png) 0 0px no-repeat;
+}
+
+ul.closest>li * {
+	display: block;
+	width: 100%;
 }
 
 .show:after {
@@ -171,6 +205,31 @@ input.location{
 .nav-pills li{
     height: 80%;
 }
+@media screen and (max-width: 600px){
+	.main-container>div.split {
+    	width: 100%;
+	}
+	#directions{
+		margin: 0 auto;
+		height: auto;
+	}
+	ul.closest > li{
+		display: inline-block;
+		width: 100%;
+	}
+}
+ @media screen and (max-width: 400px){
+	#map-canvas.split {
+    	height: 50%;
+    	max-height: 50%;
+	}
+} 
+/* @media screen and (max-width: 400px) and (orientation: landscape){
+	#map-canvas {
+    	height: 80%;
+    	max-height: calc(100% - 100px)
+	}
+} */
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
     .main-container {

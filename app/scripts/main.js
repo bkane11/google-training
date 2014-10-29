@@ -129,6 +129,15 @@ function codeAddress(store, cb, n, stores) {
   });
 }
 
+function focusOnMap(){
+	if( $(window).width() < 600)
+		$('.main-container').animate({scrollTop: 0 }, 500, 'swing')
+	// var animateTo = $('.main-container').height() + $('#map-canvas').position().top;
+	// $('.main-container').animate({scrollTop: animateTo  }, 500, 'swing')
+}
+
+
+
 function getClosest(locations, origin){
 	var closest = [];
 	hideLayers(stores);
@@ -167,8 +176,9 @@ function getClosest(locations, origin){
 						marker.directions.setPanel( $('#directions').empty()[0] ),
 						currentCenter = map.getCenter(),
 						$('.cansplit:not(.split)').addClass('split'),
-						map.getCenter(currentCenter),
-						showDirectionsButton() // recenter the map after panel split
+						map.setCenter(currentCenter), // recenter the map after panel split
+						showDirectionsButton(),
+						focusOnMap()
 				})
 				.html( info.append('<i>' + ['',itemInfo.distance.text, itemInfo.duration.text].join('<br/>') + '</i>').html() )
 				.attr('title', info[1].innerText )
@@ -177,8 +187,12 @@ function getClosest(locations, origin){
 		});
 }
 
-var meMarker;
 
+$('#directions').on("DOMNodeInserted ",function(e){
+	$(this).find('tr').on('click', focusOnMap)
+});
+
+var meMarker;
 function markMe(pos){
 	var icon = 'https://chart.googleapis.com/chart?chst=d_map_spin&chld=0.5|0|FFFF42|10|b|ME';
 	!meMarker ? meMarker = new google.maps.Marker({
@@ -262,6 +276,7 @@ function showDirectionsButton(){
 function clearResults(){
 	$('#directions').empty();
 	$('.split').removeClass('split');
+	$(window).trigger('resize');
 }
 
 function hideLoading(){
